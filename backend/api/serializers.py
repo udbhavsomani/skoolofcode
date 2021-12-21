@@ -15,15 +15,17 @@ class UserSerializer(serializers.ModelSerializer):
         }}
 
     def create(self, validated_data):
+        # print(validated_data)
+        # print(self.context['request'].data)
         user = CustomUser(
             username=validated_data['username'],
-            email=validated_data['email'],
-            first_name=validated_data['first_name'],
-            last_name=validated_data['last_name'],
-            is_student=validated_data['is_student'],
-            is_teacher=validated_data['is_teacher']
+            first_name=self.context['request'].data['name'],
         )
         user.set_password(validated_data['password'])
+        if(self.context['request'].data['designation'] == 'student'):
+            user.is_student = True
+        else:
+            user.is_teacher = True
         user.save()
         Token.objects.create(user=user)
         return user
@@ -47,7 +49,7 @@ class SubjectSerializer(serializers.ModelSerializer):
 class AvailableTimingSerializer(serializers.ModelSerializer):
     class Meta:
         model = AvailableTiming
-        fields = ('id', 'e_n', 'n_t', 't_e', 'e_t', 't_o', 'o_t', 't_th')
+        fields = ('id', 'data',)
     
     def create(self, validated_data):
         validated_data["teacher"] = self.context["request"].user

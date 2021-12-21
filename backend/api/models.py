@@ -13,10 +13,4 @@ class Subject(models.Model):
 
 class AvailableTiming(models.Model):
     teacher = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
-    e_n = models.BooleanField(default=False)
-    n_t = models.BooleanField(default=False)
-    t_e = models.BooleanField(default=False)
-    e_t = models.BooleanField(default=False)
-    t_o = models.BooleanField(default=False)
-    o_t = models.BooleanField(default=False)
-    t_th = models.BooleanField(default=False)
+    data = models.JSONField(default=dict)

@@ -65,9 +65,8 @@ admin.site.register(Subject, SubjectAdmin)
 
 
 class AvailableTimingAdmin(admin.ModelAdmin):
-    list_display = ('teacher', 'e_n', 'n_t', 't_e',
-                    'e_t', 't_o', 'o_t', 't_th')
-    fields = ('teacher', 'e_n', 'n_t', 't_e', 'e_t', 't_o', 'o_t', 't_th')
+    list_display = ('teacher',)
+    fields = ('teacher', 'data',)
 
 
 admin.site.register(AvailableTiming, AvailableTimingAdmin)
