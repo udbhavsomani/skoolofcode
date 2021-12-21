@@ -29,7 +29,7 @@ class UserSerializer(serializers.ModelSerializer):
         else:
             user.is_teacher = True
         user.save()
-        AvailableTiming(user=user, data={"":""}).save()
+        AvailableTiming(user=user, data={"<Not Available>":"<Not Available>",}).save()
         Token.objects.create(user=user)
         return user
 
