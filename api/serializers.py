@@ -20,7 +20,7 @@ class UserSerializer(serializers.ModelSerializer):
 
         user = CustomUser(
             username=validated_data['username'],
-            first_name=self.context['request'].data['name'] or validated_data['first_name'],
+            first_name=self.context['request'].data['name'],
         )
 
         user.set_password(validated_data['password'])
