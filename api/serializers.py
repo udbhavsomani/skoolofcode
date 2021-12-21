@@ -17,15 +17,12 @@ class UserSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         # print(validated_data)
         # print(self.context['request'].data)
-        try:
-            user = CustomUser(
-                username=validated_data['username'],
-                first_name=self.context['request'].data['name'],
-            )
-        except:
-            user = CustomUser(
-                username=validated_data['username'],
-            )
+
+        user = CustomUser(
+            username=validated_data['username'],
+            first_name=self.context['request'].data['name'] or validated_data['first_name'],
+        )
+
         user.set_password(validated_data['password'])
         if(self.context['request'].data['designation'] == 'student'):
             user.is_student = True
