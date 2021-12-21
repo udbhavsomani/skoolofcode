@@ -33,7 +33,7 @@ class UserSerializer(serializers.ModelSerializer):
         else:
             user.is_teacher = True
         user.save()
-        AvailableTiming(user=user).save()
+        AvailableTiming(teacher=user).save()
         Token.objects.create(user=user)
         return user
 
