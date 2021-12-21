@@ -103,7 +103,7 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ALLOWED_ORIGINS = [
-    'https://skoolofcode.herokuapp.com/',
+    'https://skoolofcode.herokuapp.com',
 ]
 
 AUTH_USER_MODEL = 'api.CustomUser'
