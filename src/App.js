@@ -32,7 +32,7 @@ function App() {
   }, [token, navigate])
 
   useEffect(() => {
-    fetch('http://127.0.0.1:8000/api/users', {
+    fetch('https://skoolofcode-api.herokuapp.com/api/users', {
       'method': 'GET',
       'headers': {
         'Content-Type': 'application/json',
@@ -46,7 +46,7 @@ function App() {
 
   useEffect(() => {
     if (isTeacher) {
-      fetch('http://127.0.0.1:8000/api/availabletiming/', {
+      fetch('https://skoolofcode-api.herokuapp.com/api/availabletiming/', {
         'method': 'GET',
         'headers': {
           'Content-Type': 'application/json',
@@ -56,7 +56,7 @@ function App() {
         .then(resp => resp.json())
         .then(resp => { setData({ id: resp[0].id, data: resp[0].data }) })
         .catch(err => console.log(err))
-      fetch('http://127.0.0.1:8000/api/addsubject/', {
+      fetch('https://skoolofcode-api.herokuapp.com/api/addsubject/', {
         'method': 'GET',
         'headers': {
           'Content-Type': 'application/json',
@@ -74,7 +74,7 @@ function App() {
         .catch(err => console.log(err))
     }
     else {
-      fetch('http://127.0.0.1:8000/get_subs', {
+      fetch('https://skoolofcode-api.herokuapp.com/get_subs', {
         'method': 'GET',
         'headers': {
           'Content-Type': 'application/json',
@@ -122,7 +122,7 @@ function App() {
       alert('Please fill all the fields')
       return;
     }
-    fetch(`http://127.0.0.1:8000/get_query_results/?time=${formData.time}&courses=${formData.courses}`, {
+    fetch(`https://skoolofcode-api.herokuapp.com/get_query_results/?time=${formData.time}&courses=${formData.courses}`, {
       'method': 'GET',
       'headers': {
         'Content-Type': 'application/json',
@@ -162,7 +162,7 @@ function App() {
   }
 
   const updateslothandler = (e) => {
-    fetch(`http://127.0.0.1:8000/api/availabletiming/${data.id}/`, {
+    fetch(`https://skoolofcode-api.herokuapp.com/api/availabletiming/${data.id}/`, {
       'method': 'PUT',
       'headers': {
         'Content-Type': 'application/json',
