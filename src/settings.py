@@ -8,7 +8,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-_dw4-s_0%=aw%hkw_7j@u5vh11oio&god$k-q7o1*5sh6e+2hl'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['skoolofcode-api.herokuapp.com']
 
