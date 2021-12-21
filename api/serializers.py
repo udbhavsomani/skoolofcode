@@ -28,16 +28,12 @@ class UserSerializer(serializers.ModelSerializer):
             )
 
         user.set_password(validated_data['password'])
-        if('is_student' in validated_data):
-            if(validated_data["is_student"] == True):
-                user.is_student = True
-        elif('designation' in self.context['request'].data):
-            if(self.context['request'].data['designation'] == 'student'):
-                user.is_student = True
+        if(self.context['request'].data['designation'] == 'student'):
+            user.is_student = True
         else:
             user.is_teacher = True
         user.save()
-        AvailableTiming(teacher=user).save()
+        AvailableTiming(user=user).save()
         Token.objects.create(user=user)
         return user
 
