@@ -1,3 +1,3 @@
-# skoolofcode - Assignment
+# skoolofcode
 
 ### Techstack: ReactJs, Django, DjangoRestFramework
